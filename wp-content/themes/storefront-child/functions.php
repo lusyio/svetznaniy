@@ -27,11 +27,6 @@ function enqueue_child_theme_styles()
 {
 // load bootstrap css
     wp_enqueue_style('bootstrap-css', get_stylesheet_directory_uri() . '/inc/assets/css/bootstrap.min.css', false, NULL, 'all');
-// fontawesome cdn
-    wp_enqueue_style('wp-bootstrap-pro-fontawesome-cdn', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css');
-// load bootstrap css
-// load AItheme styles
-// load WP Bootstrap Starter styles
     wp_enqueue_style('wp-bootstrap-starter-style', get_stylesheet_uri(), array('theme'));
     if (get_theme_mod('theme_option_setting') && get_theme_mod('theme_option_setting') !== 'default') {
         wp_enqueue_style('wp-bootstrap-starter-' . get_theme_mod('theme_option_setting'), get_template_directory_uri() . '/inc/assets/css/presets/theme-option/' . get_theme_mod('theme_option_setting') . '.css', false, '');
@@ -125,7 +120,6 @@ if ('Отключаем Emojis в WordPress') {
         if (is_array($plugins)) {
             return array_diff($plugins, array('wpemoji'));
         }
-
         return array();
     }
 
@@ -138,8 +132,7 @@ if ('Отключаем Emojis в WordPress') {
      */
     function disable_emojis_remove_dns_prefetch($urls, $relation_type)
     {
-
-        if ('dns-prefetch' == $relation_type) {
+        if ('dns-prefetch' === $relation_type) {
 
             // Strip out any URLs referencing the WordPress.org emoji location
             $emoji_svg_url_bit = 'https://s.w.org/images/core/emoji/';
@@ -148,12 +141,9 @@ if ('Отключаем Emojis в WordPress') {
                     unset($urls[$key]);
                 }
             }
-
         }
-
         return $urls;
     }
-
 }
 
 /**
@@ -194,18 +184,6 @@ function header_add_to_cart_fragment($fragments)
 }
 
 /**
- * Замена надписи на кнопке Добавить в корзину
- */
-add_filter('woocommerce_product_single_add_to_cart_text', 'woocust_change_label_button_add_to_cart_single');
-function woocust_change_label_button_add_to_cart_single($label)
-{
-
-    $label = 'Добавить в корзину';
-
-    return $label;
-}
-
-/**
  * Удаляем поля адрес и телефон, если нет доставки
  */
 
@@ -214,15 +192,14 @@ add_filter('woocommerce_checkout_fields', 'new_woocommerce_checkout_fields', 10,
 function new_woocommerce_checkout_fields($fields)
 {
     if (!WC()->cart->needs_shipping()) {
-        unset($fields['billing']['billing_address_1']); //удаляем Населённый пункт
-        unset($fields['billing']['billing_address_2']); //удаляем Населённый пункт
-        unset($fields['billing']['billing_city']); //удаляем Населённый пункт
-        unset($fields['billing']['billing_postcode']); //удаляем Населённый пункт
-        unset($fields['billing']['billing_country']); //удаляем Населённый пункт
-        unset($fields['billing']['billing_state']); //удаляем Населённый пункт
-        unset($fields['billing']['billing_company']); //удаляем Населённый пункт
-        unset($fields['billing']['phone']); //удаляем Населённый пункт
-
+        unset($fields['billing']['billing_address_1'],
+            $fields['billing']['billing_address_2'],
+            $fields['billing']['billing_city'],
+            $fields['billing']['billing_postcode'],
+            $fields['billing']['billing_country'],
+            $fields['billing']['billing_state'],
+            $fields['billing']['billing_company'],
+            $fields['billing']['phone']);
     }
     return $fields;
 }
@@ -236,11 +213,9 @@ add_filter('woocommerce_product_tabs', 'woo_remove_product_tabs', 98);
 
 function woo_remove_product_tabs($tabs)
 {
-
-    unset($tabs['description']);        // Remove the description tab
-    unset($tabs['reviews']);            // Remove the reviews tab
-    unset($tabs['additional_information']);    // Remove the additional information tab
-
+    unset($tabs['description'],
+        $tabs['reviews'],
+        $tabs['additional_information']);
     return $tabs;
 }
 
@@ -327,3 +302,44 @@ function jk_related_products_args($args)
     return $args;
 }
 
+
+/**
+ * Translate text field by selector and current language
+ * @param $text
+ * @param $selector
+ * @param bool $length
+ * @return false|mixed
+ */
+function tr_prod($text, $selector, $length = false)
+{
+    $cur_lang = get_language_attributes('html');
+    $cur_lang = $cur_lang[6] . $cur_lang[7];
+    $translates = get_field($selector . '_translates');
+    if ($translates) {
+        $translate = $translates[$selector . '_' . $cur_lang];
+        if ($translate) {
+            if ($length) {
+                return truncate_text($translate, $length);
+            }
+            return $translate;
+        }
+        if ($length) {
+            return truncate_text($text, $length);
+        }
+        return $text;
+    }
+    return false;
+}
+
+/**
+ * Truncate text by selected $length
+ * @param $text
+ * @param $length
+ * @return string
+ */
+function truncate_text($text, $length)
+{
+    $text_only_spaces = preg_replace('/\s+/', ' ', $text);
+    $text_truncated = mb_substr($text_only_spaces, 0, mb_strpos($text_only_spaces, ' ', $length));
+    return trim(mb_substr($text_truncated, 0, mb_strrpos($text_truncated, ' '))) . '...';
+}
