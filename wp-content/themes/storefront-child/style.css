@@ -9,16 +9,16 @@ Author URI:   https://richbee.ru/
 
 */
 
-html {
-    font-family: 'Roboto', sans-serif;
-}
-
 body {
-    margin: 0;
-    -moz-osx-font-smoothing: auto;
-    -webkit-font-smoothing: auto;
-    -ms-overflow-x: -moz-hidden-unscrollable;
-    overflow-x: hidden;
+    background-color: #ffffff;
+    line-height: 24px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    visibility: visible;
+    font-family: "Work Sans", sans-serif;
+    color: #777777;
+    position: relative;
 }
 
 article,
@@ -61,6 +61,74 @@ img {
 header .woocommerce {
     display: unset;
     width: unset;
+}
+
+.header__top-block {
+    font-size: 14px;
+    color: #7e7e7e;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.header__top-block select {
+    border: none;
+    color: #7e7e7e;
+    cursor: pointer;
+}
+
+.header__top-block select:hover {
+    color: #333333;
+}
+
+.header__top-block .woocs-style-3-du-dialog-starter {
+    padding: 0px;
+    background-image: none !important;
+    min-height: auto !important;
+    background-color: white;
+    color: #7e7e7e;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.header__top-block-phone {
+    color: #333333;
+    border-bottom: 1px solid #333333;
+}
+
+.header__top-block-social i {
+    font-size: 20px;
+}
+
+.header__top-block-social a {
+    color: #7e7e7e;
+}
+
+.header__top-block-social a:hover {
+    color: #333333;
+}
+
+.link-strike {
+    padding-bottom: 5px;
+    text-decoration: none;
+    background-image: linear-gradient(#333333, #333333);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+
+.link-strike:hover,
+.link-strike:focus {
+    background-size: 100% 2px;
+}
+
+.link-strike--thin {
+    background-size: 0% 1px;
+}
+
+.link-strike--thin:hover,
+.link-strike--thin:focus {
+    background-size: 100% 1px;
 }
 
 .row .woocommerce {
@@ -262,15 +330,22 @@ ul.menu li.current-menu-item > a:before {
 }
 
 header#masthead {
-    opacity: 1;
-    font-family: Roboto, sans-serif;
-    padding: 1.9rem 1rem !important;
-    background-color: #1C1C1C;
-    color: #EEEEEE;
-    border-bottom: 1px solid #2D2D2D;
     z-index: 3;
     position: relative;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+}
+
+header#masthead:before {
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    content: "";
+}
+
+.site-header {
+    padding-top: 10px;
 }
 
 .navbar-dark .navbar-nav .active > .nav-link:before, .navbar-dark .navbar-nav .nav-link.active:before, .navbar-dark .navbar-nav .nav-link.show:before, .navbar-dark .navbar-nav .show > .nav-link:before {
@@ -311,12 +386,24 @@ header#masthead {
     transition: color .1s cubic-bezier(.4, 0, .2, 1);
 }
 
-.navbar-expand-xl .navbar-collapse .navbar-nav:hover .nav-item:not(.active) a {
-    color: #9e9e9e !important;
+.navbar-nav .nav-link {
+    color: #7e7e7e;
+    font-weight: 500;
+    word-wrap: normal !important;
 }
 
-.navbar-dark .navbar-collapse .navbar-nav .nav-item:not(.active) a:hover {
-    color: #fff !important;
+.navbar-nav .nav-link:hover {
+    color: #333333;
+}
+
+ul.navbar-nav {
+    width: 100%;
+    display: table;
+}
+
+ul.navbar-nav li {
+    display: table-cell;
+    position: relative;
 }
 
 #searchBtn {
@@ -327,18 +414,7 @@ header#masthead {
 }
 
 .search-btn {
-    margin: 5px 5px;
-    padding: 6px 0;
-    border-radius: 0;
-    border: none;
-    min-width: 36px;
     cursor: pointer;
-}
-
-.search-div {
-    width: 46px;
-    height: 46px;
-    z-index: 2;
 }
 
 #searchForm {
