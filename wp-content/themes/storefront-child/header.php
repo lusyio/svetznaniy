@@ -65,7 +65,7 @@
             <div class="row">
 
                 <div class="col-2">
-                    <a href="/">
+                    <a href="<?php echo get_home_url(); ?>">
                         <img src="/wp-content/themes/storefront-child/inc/assets/logo.png"
                                      alt="<?= get_bloginfo('name'); ?>"/>
                     </a>
