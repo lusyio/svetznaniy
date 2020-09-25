@@ -1,1 +1,0 @@
-a:5:{s:7:"primary";s:12:"primary-menu";s:7:"landing";s:12:"landing-page";s:11:"full_screen";s:16:"full-screen-menu";s:17:"currency_switcher";s:13:"currency-menu";s:17:"language_switcher";s:13:"language-menu";}
