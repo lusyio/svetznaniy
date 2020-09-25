@@ -5,4 +5,4 @@
 /wp-content/*
 !wp-content/themes
 wp-content/themes/*
-!wp-content/themes/lezada
+!wp-content/themes/storefront-child
