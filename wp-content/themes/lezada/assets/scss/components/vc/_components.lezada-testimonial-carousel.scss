@@ -1,0 +1,126 @@
+.lezada-testimonial-carousel {
+	opacity: 0;
+	text-align: center;
+	margin-bottom: 0 !important;
+
+	.lezada-testimonial-carousel__cite {
+		font-size: 18px;
+		line-height: 25px;
+		font-weight: 600;
+		color: #333333;
+	}
+
+	.lezada-testimonial-carousel__sub-cite {
+		color: #7e7e7e;
+		font-size: 16px;
+
+		&:before {
+			content: '/';
+			padding-right: 10px;
+		}
+	}
+
+	img {
+		margin: 0 auto 30px;
+	}
+
+	button.slick-arrow.slick-prev,
+	.slick-arrow.slick-prev.lezada-button {
+		left: -100px;
+	}
+
+	button.slick-arrow.slick-next,
+	.slick-arrow.slick-next.lezada-button {
+		right: -100px;
+	}
+}
+
+.lezada-testimonial-carousel__text {
+	position: relative;
+	font-size: 16px;
+	line-height: 25px;
+	font-weight: 400;
+	color: #333333;
+	opacity: 0.8;
+	padding-bottom: 20px;
+
+	@include media-breakpoint-up(md) {
+		font-size: 18px;
+		line-height: 36px;
+		padding-bottom: 40px;
+	}
+
+	.single-testimonial & {
+		font-weight: 300;
+		padding-top: 100px;
+
+		@include media-breakpoint-up(md) {
+			font-size: 24px;
+			line-height: 40px;
+		}
+
+		&:before {
+			position: absolute;
+			content: url(./assets/images/quote.png);
+			left: 50%;
+			top: 40px;
+
+			transform: translateX(-50%);
+		}
+	}
+
+	.gray-box & {
+		padding: 0 50px;
+
+		@include media-breakpoint-down(sm) {
+			padding: 0;
+		}
+	}
+}
+
+.lezada-testimonial-carousel__cite {
+	font-size: 18px;
+	font-weight: 600;
+	color: #333333;
+
+	.single-testimonial & {
+		margin-bottom: 15px;
+	}
+}
+
+.multiple-testimonials {
+	text-align: center;
+	padding: 20px;
+
+	.lezada-testimonial-carousel__img,
+	.box-cite {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.box-cite {
+		width: 100%;
+		margin-top: 10px;
+		text-align: center;
+
+		@include media-breakpoint-up(lg) {
+			width: calc(100% - 110px);
+			margin: 10px 0 20px 20px;
+			text-align: left;
+		}
+	}
+
+	@include media-breakpoint-up(lg) {
+		text-align: left;
+	}
+
+	img {
+		border-radius: 100%;
+
+		@include media-breakpoint-up(md) {
+			margin: 0 auto;
+		}
+	}
+}
+
+

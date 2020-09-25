@@ -1,0 +1,171 @@
+.lezada-simple-banner {
+	position: relative;
+	overflow: hidden;
+
+	&.style-image {
+		.content {
+			position: absolute;
+			bottom: 30px;
+			left: 30px;
+		}
+	}
+
+	&.hover-zoom-in:hover img {
+		transform: scale(1.1);
+	}
+
+	&.hover-border-zoom:hover {
+		&:after {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		img {
+			transform: scale(1.1);
+		}
+	}
+
+	&.hover-border-zoom {
+
+		&:after {
+			display: block;
+			position: absolute;
+			content: '';
+			top: 20px;
+			left: 20px;
+			width: calc(100% - 40px);
+			height: calc(100% - 40px);
+			background-color: transparent;
+			border: 1px solid #ffffff;
+			opacity: 0;
+			visibility: hidden;
+
+			@extend %transit;
+		}
+	}
+
+	&.hover-blur:hover img {
+		@include filter(blur(2px));
+	}
+
+	&.hover-grayscale:hover img {
+		@include filter(grayscale(100%));
+	}
+
+	&.hover-white-overlay:before,
+	&.hover-black-overlay:before {
+		content: '';
+		opacity: 0;
+		z-index: 1;
+
+		@extend %transit;
+		@extend %absolute-center;
+	}
+
+	&.hover-white-overlay {
+
+		&:before {
+			background-color: #ffffff;
+		}
+
+		&:hover:before {
+			opacity: .3;
+		}
+	}
+
+	&.hover-black-overlay {
+
+		&:before {
+			background-color: #000000;
+		}
+
+		&:hover:before {
+			opacity: .3;
+		}
+	}
+
+	&.has-border {
+		border: 1px solid #d8d8d8;
+	}
+
+	> a {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+	}
+
+	.text {
+		position: absolute;
+		bottom: 30px;
+		left: 30px;
+		margin: 0;
+		font-size: 56px;
+		line-height: 50px;
+		font-weight: 300;
+
+		@include media-breakpoint-down(lg) {
+			font-size: 30px;
+			line-height: 30px;
+		}
+
+		@include media-breakpoint-up(sm) {
+			bottom: 40px;
+			left: 40px;
+		}
+	}
+
+	.button-banner {
+		position: absolute;
+		top: 30px;
+		right: 30px;
+		z-index: 3;
+
+		@include media-breakpoint-up(sm) {
+			top: 40px;
+			right: 40px;
+		}
+
+		a {
+			font-size: 24px;
+			line-height: 36px;
+			font-weight: 400;
+			color: #333333;
+		}
+	}
+
+	img {
+		width: 100%;
+
+		@extend %transit;
+	}
+
+	.number-status {
+		position: absolute;
+		top: 40px;
+		left: 40px;
+		z-index: 2;
+		font-size: 18px;
+		line-height: 36px;
+		letter-spacing: 1px;
+		font-weight: 600;
+		color: #333333;
+	}
+}
+
+.lezada-simple-banner.style-text.has-border {
+
+	> a {
+		border: 1px solid transparent;
+		@extend %transit;
+	}
+
+	&:hover {
+		> a {
+			border: 1px solid #dddddd;
+		}
+	}
+}
+

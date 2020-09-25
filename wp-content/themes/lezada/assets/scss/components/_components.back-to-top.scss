@@ -1,0 +1,30 @@
+.back-to-top {
+	display: block;
+	color: #ababab !important;
+	cursor: pointer;
+	z-index: 2;
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+	font-size: 0;
+	opacity: 0;
+	text-align: center;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	border-radius: 100%;
+	background-color: #333333;
+
+	i {
+		font-size: 30px;
+		color: #ffffff;
+	}
+
+	&.show {
+		opacity: 1;
+	}
+
+	&:hover {
+		background-color: #abb8c0;
+	}
+}
