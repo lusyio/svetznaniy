@@ -1,0 +1,308 @@
+/*=========================================================
+ * Product grid, carousel, tabs and widget
+ =========================================================*/
+.lezada-product-grid,
+.lezada-product-carousel {
+
+	.vc_tta-panel-body & {
+
+		.animated.product {
+			animation-duration: .4s;
+		}
+	}
+}
+
+.tm-shortcode .lezada-loadmore-wrap .lezada-loadmore-btn {
+	color: #333333;
+}
+
+.lezada-product-carousel {
+
+	.products {
+		opacity: 0;
+
+		@extend %transit;
+
+		@include media-breakpoint-down(xs) {
+
+			.slick-arrow.slick-next {
+				right: 10px;
+			}
+
+			.slick-arrow.slick-prev {
+				left: 10px;
+			}
+
+			.slick-slide {
+				opacity: .5;
+			}
+
+			.slick-active,
+			.slick-current {
+				opacity: 1;
+			}
+		}
+
+		@include media-breakpoint-up(xl) {
+
+			.slick-arrow.slick-next {
+				right: -50px;
+
+			}
+
+			.slick-arrow.slick-prev {
+				left: -50px;
+			}
+
+			&:hover {
+
+				.slick-arrow.slick-next {
+					right: -30px;
+				}
+
+				.slick-arrow.slick-prev {
+					left: -30px;
+				}
+			}
+		}
+
+		.slick-track.filtering {
+			transform: translate3d(0, 0, 0) !important;
+
+			.product {
+				width: auto !important;
+			}
+		}
+	}
+
+	.product {
+		animation: zoomIn .25s;
+	}
+
+}
+
+.lezada-product-tabs {
+
+	&.tabs-align-left {
+
+		.product-filter {
+			text-align: left;
+
+			li:first-of-type > a {
+				margin-left: 0;
+			}
+		}
+	}
+
+	&.tabs-align-right {
+
+		.product-filter {
+			text-align: right;
+
+			li:last-of-type > a {
+				margin-right: 0;
+			}
+		}
+	}
+
+	&.tabs-align-center {
+		text-align: center;
+	}
+
+	.product-filter {
+		list-style: none;
+		margin: 0 0 60px;
+		padding: 0;
+
+		li {
+			display: inline-block;
+			margin-left: -4px;
+
+			&:first-of-type {
+				margin-left: 0;
+			}
+
+			a:hover:after,
+			a.active:after {
+				width: 100%;
+			}
+
+			> a {
+				font-size: 27px;
+				line-height: 40px;
+				font-weight: 400;
+				color: #cccccc;
+				margin: 0 5px;
+
+				@include media-breakpoint-up(sm) {
+					font-size: 48px;
+					line-height: 64px;
+					margin: 0 20px;
+				}
+
+				&.active,
+				&:hover {
+					color: #333333;
+				}
+
+				&:after {
+					content: '/';
+					color: #cccccc;
+					padding-left: 5px;
+
+					@include media-breakpoint-up(sm) {
+						padding-left: 25px;
+					}
+				}
+			}
+
+			&:last-child {
+				> a:after {
+					display: none;
+				}
+			}
+		}
+
+		@include media-breakpoint-down(sm) {
+			margin-bottom: 30px;
+
+			li {
+				padding-top: 10px;
+				border: none;
+
+				> a {
+					display: inline-block;
+					padding-bottom: 5px;
+				}
+			}
+		}
+	}
+
+	.products.loading {
+
+		&:before {
+			content: '';
+			background-color: #ffffff;
+			z-index: 10;
+
+			@include absolute-center;
+		}
+
+		&:after {
+			position: absolute;
+			top: 20px;
+			left: 50%;
+			content: url(assets/images/loading.svg);
+			z-index: 10;
+			transform: translateX(-50%) scale(1.5);
+		}
+	}
+
+}
+
+.lezada-product-widget {
+	margin-bottom: 30px;
+
+	.title {
+		font-size: 20px;
+		margin-bottom: 35px;
+		position: relative;
+		font-weight: 600;
+		color: #333333;
+	}
+
+	.slick-dots {
+		float: right;
+		width: auto;
+		margin-top: 15px !important;
+	}
+
+	.slick-arrow {
+
+		&.slick-prev {
+			left: -30px;
+		}
+
+		&.slick-next {
+			right: -30px;
+		}
+	}
+
+	.slick-arrow.small {
+		width: 30px;
+		height: 30px;
+		opacity: 1;
+		visibility: visible;
+		color: #999999;
+		border: none;
+		background-color: transparent;
+
+		&:before {
+			width: 28px;
+			height: 28px;
+			line-height: 28px;
+			font-size: 12px;
+		}
+
+		&.slick-prev {
+			left: auto;
+			right: 30px;
+		}
+
+		&.slick-next {
+			right: 0;
+		}
+	}
+
+	.slick-arrows-bottom {
+		position: relative;
+		text-align: right;
+		float: left;
+		margin-top: -18px;
+
+		.slick-arrow {
+			position: relative;
+			left: auto !important;
+			right: auto !important;
+			top: auto !important;
+
+			transform: translateY(0);
+		}
+	}
+
+	.product {
+		margin-bottom: 20px;
+		padding-bottom: 20px;
+	}
+
+	.add-to-cart-btn {
+		position: absolute;
+		bottom: 0;
+		top: auto;
+		left: 20px;
+		opacity: 1;
+		visibility: visible;
+		transform: none;
+	}
+
+	&.enable-carousel {
+
+		.product_list_widget {
+			opacity: 0;
+
+			&.slick-initialized {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+@include media-breakpoint-down(sm) {
+
+	.vc_tta-panel-body .tm-shortcode .products {
+		margin-left: -5px;
+		margin-right: -5px;
+	}
+}
+
+

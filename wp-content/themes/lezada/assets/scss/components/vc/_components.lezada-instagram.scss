@@ -1,0 +1,52 @@
+.lezada-instagram {
+
+	.user-name {
+		font-size: 18px;
+		color: #999999;
+
+		a {
+			display: inline-block;
+			font-size: 14px;
+			line-height: 24px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			font-weight: 500;
+			color: #333333;
+
+			@include underline-on-hover();
+		}
+	}
+
+	&.align-center {
+		.user-name {
+			margin: 0 auto 50px;
+			text-align: center;
+		}
+	}
+
+	&--carousel .tm-instagram-pics {
+		opacity: 0;
+
+		@extend %transit;
+	}
+
+	.tm-instagram-follow-links {
+		text-align: left;
+		font-size: 34px;
+		line-height: 48px;
+		text-transform: none;
+		font-weight: 400;
+		color: #333333;
+		margin-top: 15px !important;
+	}
+
+	.user-name,
+	.tm-instagram-follow-links {
+		margin: 0 auto;
+	}
+
+
+	.row-instagram {
+		align-items: center;
+	}
+}
